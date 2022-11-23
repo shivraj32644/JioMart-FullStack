@@ -1,10 +1,10 @@
 import express from 'express'
 import { connectDataBase } from './configs/db.connect.js';
 import { productRoute } from './Routes/product.routes.js';
-
+import  Router  from './Routes/cart.routes';
 const app = express();
 app.use(productRoute);
-
+app.use('/',Router);
 app.listen(3020, async() => {
     try {
         await connectDataBase();
