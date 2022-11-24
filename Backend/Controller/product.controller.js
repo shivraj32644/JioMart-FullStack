@@ -22,7 +22,9 @@ export const getProducts = async(req,res) => {
             data = await productModel.find(filter)
         }
         if (sort && order) {
-            data = 
+            order = order === 'asc' ? 1 : -1;
+            console.log("this is order", order);
+            data = await productModel.find().sort({[sort]:order})
         }
 
         return res.status(200).send(data)
