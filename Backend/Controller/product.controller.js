@@ -5,6 +5,7 @@ export const getProducts = async(req,res) => {
     try {
         let {q,sort,limit,page,order} = req.query
         let filter = req.query;
+        console.log(filter);
         let data =  await productModel.find();
         // if  (q) {
         //     await productModel.createIndex({ item_name: 'text'})
@@ -17,10 +18,11 @@ export const getProducts = async(req,res) => {
             data = await productModel.find().limit(limit).skip(limit*(page-1))
         }
         if (filter) {
-            
+            const a = filter;
+            data = await productModel.find(filter)
         }
         if (sort && order) {
-            
+            data = 
         }
 
         return res.status(200).send(data)
