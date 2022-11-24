@@ -1,6 +1,17 @@
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
+
+
+});
+export const productModel = mongoose.model("products", productSchema);
+
+
+
+
+/*
+
+
   item_name: { type: String },
   item_img_url: { type: String },
   item_other_img_url: [String],
@@ -15,6 +26,7 @@ const productSchema = new mongoose.Schema({
   item_quantity: { type: Number },
   text_veg: { type: Boolean },
   item_category: { type: String },
+  id:{type:Number},
   item_addtocart: { type: Boolean }
-});
-export const productModel = mongoose.model("products", productSchema);
+
+*/
