@@ -1,4 +1,3 @@
-import { connectDataBase } from "../configs/db.connect.js";
 import { productModel } from "../Models/product.model.js";
 
 const productArr = [
@@ -52,25 +51,11 @@ const productArr = [
     id: 2,
     item_category: "Top_Deals",
     item_addtocart: false,
-  },
-  
-];
-{
-  
-}
-
-export async function addData() {
-  await connectDataBase();
-  try {
-    // const result = await productModel.find().lean().exec();
-    await productModel.insertMany(productArr);
-    // console.log(result);
-    
-  } catch (error) {
-    console.log(error)
   }
-} 
+ 
+];
 
 
+const result = await productModel.insertMany(productArr);
 
-addData();
+console.log(result);
