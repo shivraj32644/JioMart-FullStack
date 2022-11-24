@@ -6,20 +6,22 @@ export const getProducts = async(req,res) => {
         let {q,sort,limit,page,order} = req.query
         let filter = req.query;
         let data =  await productModel.find();
-        if  (q) {
-            await productModel.createIndex({ item_name: 'text'})
-            data = await productModel.find({ $text: { $search: 'Maggi 2-Minute' }  })
-            console.log(data)
+        // if  (q) {
+        //     await productModel.createIndex({ item_name: 'text'})
+        //     data = await productModel.find({ $text: { $search: 'Maggi 2-Minute' }  })
+        //     console.log(data)
+        // }
+        if (page && limit) {
+            limit = Number(limit);
+            // page = 
+            data = await productModel.find().limit(limit).skip(limit*(page-1))
         }
-        // if (page && limit) {
+        if (filter) {
             
-        // }
-        // if (filter) {
+        }
+        if (sort && order) {
             
-        // }
-        // if (sort && order) {
-            
-        // }
+        }
 
         return res.status(200).send(data)
         
