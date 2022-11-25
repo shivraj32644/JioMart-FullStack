@@ -16,20 +16,20 @@ export const getProducts = async (req, res) => {
     delete filter.page;
     delete filter.order;
     
-    console.log(filter);
-    var allKeys = Object.keys(filter)
-    console.log("All Keys", allKeys[0].split("$"))
-    console.log("All Keys", allKeys[1].split("$"))
+    // console.log(filter);
+    // var allKeys = Object.keys(filter)
+    // console.log("All Keys", allKeys[0].split("$"))
+    // console.log("All Keys", allKeys[1].split("$"))
     
-    if (allKeys.includes("lte") && allKeys.includes("gte")) {
+    // if (allKeys.includes("lte") && allKeys.includes("gte")) {
       
       
-      const key = allKeys[0]
-      filter = { [key]: {  $gte: 2000, $lte: 4000 } }
-    }
-    else {
+    //   const key = allKeys[0]
+    //   filter = { [key]: {  $gte: 2000, $lte: 4000 } }
+    // }
+    // else {
       
-    }
+    // }
     // if()
      
     let sortBy = {};
@@ -39,8 +39,7 @@ export const getProducts = async (req, res) => {
       sortBy[sort] = -1;
     }
 
-    data = await productModel
-      .find({ ...filter, item_name: { $regex: search, $options: "i" } })
+    data = await productModel.find({ ...filter, item_name: { $regex: search, $options: "i" } })
       .sort(sortBy)
       .skip(page * limit)
       .limit(limit);
