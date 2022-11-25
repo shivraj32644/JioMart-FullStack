@@ -18,9 +18,11 @@ export const getProducts = async (req, res) => {
     
     console.log(filter);
     var allKeys = Object.keys(filter)
+    console.log("All Keys", allKeys[0].split("$"))
+    console.log("All Keys", allKeys[1].split("$"))
+    
     if (allKeys.includes("lte") && allKeys.includes("gte")) {
       
-      console.log(allKeys[0])
       
       const key = allKeys[0]
       filter = { [key]: {  $gte: 2000, $lte: 4000 } }
