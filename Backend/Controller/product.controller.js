@@ -17,8 +17,19 @@ export const getProducts = async (req, res) => {
     delete filter.order;
     
     console.log(filter);
+    var allKeys = Object.keys(filter)
+    if (allKeys.includes("lte") && allKeys.includes("gte")) {
+      
+      console.log(allKeys[0])
+      
+      const key = allKeys[0]
+      filter = { [key]: {  $gte: 2000, $lte: 4000 } }
+    }
+    else {
+      
+    }
     // if()
-    filter = { item_final_price: {  $gte: 2000, $lte: 4000 } } 
+     
     let sortBy = {};
     if (order === "asc") {
       sortBy[sort] = 1;
