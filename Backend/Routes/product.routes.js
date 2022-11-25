@@ -5,4 +5,3 @@ export const productRoute = Router();
 
 productRoute.get("/", getProducts);
 productRoute.get("/:id", getProductById);
-// productRoute.post("/product",addProduct)

@@ -5,10 +5,9 @@ dotenv.config();
 const username = process.env.mongoUserName;
 const password = process.env.mongoPassword;
 
-
 export const connectDataBase = () => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(`mongodb+srv://${username}:${password}@database.5lmxkzm.mongodb.net/?retryWrites=true&w=majority`, (err) => {
+        mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.cewl226.mongodb.net/?retryWrites=true&w=majority/jiomart`, (err) => {
             if (err) {
                 reject("Database Connect Failed")
             }
