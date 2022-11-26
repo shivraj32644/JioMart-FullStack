@@ -4,13 +4,13 @@ import { AuthRouter } from './Middlewares/auth.middleware.js';
 import cors from 'cors'
 import { UserRouter } from './Routes/user.routes.js';
 import { productRoute } from './Routes/product.routes.js';
+const port = process.env.PORT || 3020;
 const app = express();
 app.use(express.json());
 app.use(cors())
 app.use('/auth',AuthRouter)
 app.use('/user', UserRouter)
 app.use(productRoute)
-const port = process.env.PORT || 3020;
 app.listen(port, async() => {
     try {
         await connectDataBase();

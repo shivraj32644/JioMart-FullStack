@@ -15,6 +15,7 @@ export const getProducts = async (req, res) => {
     delete filter.q;
     delete filter.page;
     delete filter.order;
+    // productModel.findByIdAndDelete
 
     // var allKeys = Object.keys(filter)
     // console.log("All Keys", allKeys[0].split("$"))
