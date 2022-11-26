@@ -13,6 +13,7 @@ export const connectDataBase = () => {
                 reject("Database Connect Failed")
             }
             else {
+                console.log("Connection Success")
                 resolve();
             }
         })

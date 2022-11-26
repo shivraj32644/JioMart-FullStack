@@ -1,6 +1,7 @@
 import { productModel } from "../Models/product.model.js";
 
 export const getProducts = async (req, res) => {
+  console.log("In product Route");
   try {
     let data = await productModel.find();
     const length = await productModel.find().count();
@@ -53,6 +54,8 @@ export const getProducts = async (req, res) => {
 };
 
 export const getProductById = async (req, res) => {
+  console.log("In product Route");
+
   try {
     let data = await productModel.findById(req.params.id);
     res.send(data);
