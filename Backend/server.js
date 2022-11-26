@@ -10,7 +10,7 @@ app.use(cors())
 app.use('/auth',AuthRouter)
 app.use('/user', UserRouter)
 app.use(productRoute)
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3020;
 app.listen(port, async() => {
     try {
         await connectDataBase();
