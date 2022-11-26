@@ -9,7 +9,7 @@ const port = process.env.PORT || 3020;
 const app = express();
 app.use(express.json());
 app.use(cors())
-app.use('/',productRoute)
+app.use('/products',productRoute)
 app.use('/auth',AuthRouter)
 app.use('/user', UserRouter)
 app.use('/cart',CartRouter)
