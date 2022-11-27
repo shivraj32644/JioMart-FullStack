@@ -13,6 +13,17 @@ app.use('/products',productRoute)
 app.use('/auth',AuthRouter)
 app.use('/user', UserRouter)
 app.use('/cart',CartRouter)
+app.get("*", (req, res) => {
+    return res.send({
+        message: "You Are not on Right Route",
+        "Possible Routes": {
+            "Product": "/products",
+            "auth": "/auth",
+            "user": "/user",
+            "cart":"/cart"
+        }
+    })
+})
 app.listen(port, async() => {
     try {
         await connectDataBase();

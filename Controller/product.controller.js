@@ -10,33 +10,27 @@ export const getProducts = async (req, res) => {
     const search = req.query.q || "";
     let sort = req.query.sort || "";
     let order = req.query.order || "";
+    let range = req.query.range || "";
+    let lte = Number(req.query.lte) || 200000000;
+    let gte = Number(req.query.gte) || 0;
     let filter = req.query || {};
     delete filter.sort;
     delete filter.limit;
     delete filter.q;
     delete filter.page;
     delete filter.order;
-    // productModel.findByIdAndDelete
+    delete filter.range;
+    delete filter.lte;
+    delete filter.gte;
+    if (range.length > 0) {
+      filter[range] = { $gte: gte, $lte: lte };
+    }
 
-    // var allKeys = Object.keys(filter)
-    // console.log("All Keys", allKeys[0].split("$"))
-    // console.log("All Keys", allKeys[1].split("$"))
-    // console.log(allKeys);
-
-    // if (true) {
-
-    //   const key = allKeys[0]
-    // }
-    // else {
-        
-    // }
-    // filter = { item_price: {  $gte: 2000, $lte: 4000 } }
-    
     let sortBy = {};
     if (order === "asc") {
-        sortBy[sort] = 1;
+      sortBy[sort] = 1;
     } else if (order === "desc") {
-        sortBy[sort] = -1;
+      sortBy[sort] = -1;
     }
 
     data = await productModel
