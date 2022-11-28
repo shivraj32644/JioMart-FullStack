@@ -28,7 +28,7 @@ const AccountPage = () => {
   const [orders, setOrders] = useState([]);
   const toast = useToast();
   let id = localStorage.getItem("user_id") || ""; 
-  // console.log(orders)
+  
 
   const handleLogout = () => {
     dispatch(set_isauth(false));
@@ -43,6 +43,7 @@ const AccountPage = () => {
 
     navigate("/account/login");
   };
+
 
   let handleAccount = async () => {
     let data1 = await fetch(`https://jiomart-server.cyclic.app/user/${id}`);
