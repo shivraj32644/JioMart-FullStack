@@ -22,6 +22,7 @@ export const getProducts = async (req, res) => {
     delete filter.range;
     delete filter.lte;
     delete filter.gte;
+    
     if (range.length > 0) {
       filter[range] = { $gte: gte, $lte: lte };
     }

@@ -1,122 +1,153 @@
-import Cart from '../Models/cart.model.js';
+import Cart from "../Models/cart.model.js";
 
+export const getCart = async (req, res) => {
+  
+  try {
+    const { user_Id } = req.params;
+    const products = await Cart.find({user_Id});
+      res.status(200).json(products);
+      
+  } catch (error) {
+    res.status(500).json({ message: "internal Server Error" });
+  }
+};
 
-export const getCart= async(req,res) => {
-    console.log("products");
-    try {
-        const products = await Cart.find();
-        res.status(200).json(products);
-    } catch (error) {
-        res.status(500).json({message:"staltla"});
+export const getOneItem = async (req, res) => {
+  const { id } = req.params;
+  // console.log("this is id ",id)
+  try {
+    const item = await Cart.findOne({ item_Id: id });
+
+    if (item) {
+      return res.send({ status: true });
+    } else {
+      return res.send({ status: false });
     }
-}    
+  } catch (error) {
+    res.send("error");
+  }
+};
+export const postCart = async (req, res) => {
+  try {
 
+    const carts = new Cart(req.body);
+    const data = await carts.save();
 
-export const postCart = async(req,res)=>{
-    console.log("postCart");
-    try {
-         console.log(req.body);
-        
-           const carts = new Cart(req.body);
-           const data = await carts.save();
+    return res.status(200).send({
+      message: "Successfully Added",
+      carts: data,
+    });
+  } catch (error) {
+    return res.status(500).send({
+      message: error,
+    });
+  }
+};
+
+export const incCart = async (req, res) => {
+  try {
+    let id = req.params.id;
+      let cart = await Cart.findById(id);
+      if (cart) {
+          let { item_quantity } = cart;
+          const newQuantity = item_quantity + 1;
+      
+         const newData= await Cart.findByIdAndUpdate(
+            req.params.id,
+            {
+              $set: { item_quantity: newQuantity },
+            },
+            { new: true }
+          );
+      
+          return res.status(201).send({
+            message: "successfully incremented",
+            carts: newData,
+          });
           
-           return res.status(201).send({
-               message : 'Successfully Added',
-              carts : data
-            })
-          
-    } 
-    catch (error) {
-        return res.status(500).send({
-            message : error
-        })
-    }
-}
+      }
+      else {
+        return res.status(404).send({
+            status:"Failed",
+            message: "Item not Found",
+            
+          });
+      }
+  } catch (error) {
+    return res.status(500).send({
+      message: error,
+    });
+  }
+};
 
+export const decCart = async (req, res) => {
+  try {
+    const id = req.params.id;
+      const cart = await Cart.findById({ _id: id });
+      if (cart) {
+        let { item_quantity } = cart;
+        const newQuantity = item_quantity - 1;
+        console.log(newQuantity)
+        var updatedData = null;
+        if (newQuantity <= 0) {
+          updatedData = await Cart.findByIdAndDelete({ _id: id },{new:true});
+        }
+        else {
+          updatedData = await Cart.findByIdAndUpdate(
+              { _id: id },
+              {
+                $set: {
+                  item_quantity: item_quantity - 1,
+                },
+                }, {
+                  new:true
+              }
+            );
+        }
+      
+  
+      return res.status(201).send({
+        message: "successfully decremented",
+        carts: updatedData,
+      });
+      }
+      else {
+          return res.status(404).send({
+            status:"Failed",
+            message: "Item not Found",
+            
+          });
+      }
+     
+  } catch (error) {
+    return res.status(500).send({
+      message: error,
+    });
+  }
+};
 
-export const incCart = async(req,res)=>{
-    console.log("incCart");
-    try {
-        let id = req.params.id;
-        // let temp = req.params._id
-        // console.log(temp,id)
-         let cart = await Cart.findById(id)
-        // const cart = await Cart.find({"_id" : id});
-        // console.log('Cart: ',cart);
-        let {item_quantity} = cart;
-        console.log('item_quantity: ',item_quantity);
+export const delCart = async (req, res) => {
 
-         const newQuantity = item_quantity+1
-       
-        console.log(newQuantity);
-        // console.log(cart)
-          await Cart.findByIdAndUpdate(req.params.id,{
-             $set:{ item_quantity : newQuantity }                 
-          })
-          
-           return res.status(201).send({
-               message : 'successfully incremented',
-              carts : cart
-            })
-          
-    } 
-    catch (error) {
-        return res.status(500).send({
-            message : error
-        })
-    }
-}
-
-export const decCart = async(req,res)=>{
-    console.log("decCart");
-    try {
-        const id = req.params.id;
-         console.log(req.params.id);
-        const cart = await Cart.findById({_id:id});
-        let {item_quantity} = cart;
-console.log(item_quantity);
-         const products = await Cart.findByIdAndUpdate({_id : id},
-            { $set:
-                {
-                  item_quantity : item_quantity-1
-                 }
-             })
-          
-          
-           return res.status(201).send({
-               message : 'successfully decremented',
-              carts : products
-            })
-          
-    } 
-    catch (error) {
-        return res.status(500).send({
-            message : error
-        })
-    }
-}
-
-export const delCart = async(req,res)=>{
-    console.log("delCart");
-
-    try {
-        const id = req.params.id;
-         console.log(req.params.id);
-        const cart = await Cart.findByIdAndDelete({_id:id});
-          
-           return res.status(201).send({
-               message : 'successfully deleted',
-               carts : cart
-            })
-          
-    } 
-    catch (error) {
-        return res.status(500).send({
-            message : error
-        })
-    }
-}
-
-
-
-
+  try {
+    const id = req.params.id;
+    const cart = await Cart.findByIdAndDelete({ _id: id },{new:true});
+      if (cart) {
+        return res.status(201).send({
+            message: "successfully deleted",
+            carts: cart,
+          });
+      }
+      else {
+        return res.status(404).send({
+            status:"Failed",
+            message: "Item not Found",
+            
+          });
+      }
+    
+  } catch (error) {
+    return res.status(500).send({
+      message: error,
+    });
+  }
+};
