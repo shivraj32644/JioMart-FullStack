@@ -9,8 +9,8 @@ app.use(Router);
 app.listen(3020, async() => {
     try {
         await connectDataBase();
-        console.log("localhost:3020")
+        console.log("localhost:3020");
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 })
