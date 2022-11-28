@@ -9,7 +9,6 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Flex,
-  Text,
   useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
