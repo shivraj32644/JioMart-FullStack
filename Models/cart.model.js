@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 const cartSchema = new mongoose.Schema({
     item_name : String,
     item_img_url : String,
-    item_final_price : String,
-    item_price : String,
+    item_final_price : Number,
+    item_price : Number,
     item_discount : String,
     item_tag_name : String,
     item_disc_price : Number,

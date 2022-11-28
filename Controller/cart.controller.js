@@ -32,7 +32,7 @@ export const postCart = async (req, res) => {
 
     const carts = new Cart(req.body);
     const data = await carts.save();
-
+    
     return res.status(200).send({
       message: "Successfully Added",
       carts: data,
@@ -151,3 +151,20 @@ export const delCart = async (req, res) => {
     });
   }
 };
+
+
+export const deleteAllItem = (req,res) => {
+  try {
+    const { id } = req.params;
+    Cart.deleteMany({ user_Id: id });
+    return res.status(200).send({
+      status: "success",
+      message:"Checkout Successful"
+    })
+  } catch (error) {
+    res.status(500).send({
+      status: "Failed",
+      message:"Internal Server Error"
+    })
+  }
+}
