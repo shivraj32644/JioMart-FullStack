@@ -14,7 +14,6 @@ export const getCart = async (req, res) => {
 
 export const getOneItem = async (req, res) => {
   const { id } = req.params;
-  // console.log("this is id ",id)
   try {
     const item = await Cart.findOne({ item_Id: id });
 
