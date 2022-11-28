@@ -8,6 +8,7 @@ import RegisterForm from "../Components/RegisterForm";
 export default function SignIn_SignUp() {
   const toast = useToast();
   const { page } = useParams();
+
   const [otp, setOtp] = useState("");
   const [inputOtp, setInputOtp] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
