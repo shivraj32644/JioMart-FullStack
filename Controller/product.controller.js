@@ -13,6 +13,7 @@ export const getProducts = async (req, res) => {
     let range = req.query.range || "";
     let lte = Number(req.query.lte) || 200000000;
     let gte = Number(req.query.gte) || 0;
+
     let filter = req.query || {};
     delete filter.sort;
     delete filter.limit;
