@@ -26,6 +26,7 @@ function Index() {
       </Box>
       <Box>
         <Box>
+
           <img
             width="100%"
             src="https://www.jiomart.com/images/cms/aw_rbslider/slides/1665654011_SBI_Unit.jpg"
