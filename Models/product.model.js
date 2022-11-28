@@ -15,6 +15,6 @@ const productSchema = new mongoose.Schema({
   item_quantity: { type: Number ,required:false},
   text_veg: { type: Boolean ,required:false},
   item_category: { type: String ,required:false},
-  item_addtocart: { type: Boolean ,required:false}
+  item_addtocart: { type: Boolean ,required:false},
 });
 export const productModel = mongoose.model("products", productSchema);

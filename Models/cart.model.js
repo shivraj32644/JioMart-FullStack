@@ -9,7 +9,7 @@ const cartSchema = new mongoose.Schema({
     item_disc_price : Number,
     item_quantity: Number,
     "item_Id":String,
-    user_Id : {type : String, required : true},
+    user_Id : {type : String, required : true}
 },
 {
     timestamps:true,

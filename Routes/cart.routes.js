@@ -11,6 +11,6 @@ CartRouter.patch('/incCart/:id',incCart);
 CartRouter.patch('/decCart/:id',decCart);
 CartRouter.delete('/delCart/:id',delCart);
 CartRouter.get('/Item/:id', getOneItem);
-CartRouter.delete('/deleteall/:id',deleteAllItem)
+CartRouter.delete('/deleteall/:id',deleteAllItem);
 
 export default CartRouter;

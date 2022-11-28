@@ -2,8 +2,8 @@ import mongoose from "mongoose"
 import * as dotenv from 'dotenv'
 dotenv.config();
 
-const username = "shivraj"
-const password ="shivraj"
+const username = "shivraj";
+const password ="shivraj";
 
 
 export const connectDataBase = () => {

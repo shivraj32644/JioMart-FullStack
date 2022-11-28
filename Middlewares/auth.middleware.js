@@ -9,8 +9,8 @@ dotenv.config({
     path : './.env'
 })
 // const app = express();
-const JWT_SECRET =  process.env.JWT_SECRET_KEY;
-export const AuthRouter = Router();
+const JWT_SECRET =  process.env.JWT_SECRET_KEY
+export const AuthRouter = Router()
 
 
 AuthRouter.post('/Signup',async(req,res)=>{

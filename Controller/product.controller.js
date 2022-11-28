@@ -24,7 +24,7 @@ export const getProducts = async (req, res) => {
     delete filter.gte;
     
     if (range.length > 0) {
-      filter[range] = { $gte: gte, $lte: lte };
+      filter[range] = { $gte: gte, $lte: lte }
     }
 
     let sortBy = {};
