@@ -47,12 +47,10 @@ export default function Filters({
   urlFilterInit
 }) {
   const filters = filterList[product_category];
-  // handleUrlFilter(urlFilterInit)
-  // console.log(urlFilter)
-
+  
   const handleChange = (e) => {
     const { name, checked } = e.target;
-    // console.log(name,checked)
+    
     if (name === "Availability") {
       handleUrlFilter({ ...urlFilter, [name]: checked });
     } else {
@@ -83,9 +81,9 @@ export default function Filters({
 
   useEffect(()=>{
     handleUrlFilter(urlFilterInit)
-    // console.log(1)
+   
   },[filters])
-  // console.log(filters)
+  
   return (
     <Container mt={10} bg={"white"} pt={5} pb={5} width="90%" borderRadius={10}>
       <Heading size="md" fontWeight={"medium"} pb={4}>

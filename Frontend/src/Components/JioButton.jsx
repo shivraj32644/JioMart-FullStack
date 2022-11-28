@@ -11,8 +11,7 @@ import {
   getCart,
   findItemInCart,
 } from "../service/api";
-import { useEffect } from "react";
-import { useRef } from "react";
+
 import { useState } from "react";
 import { Spinner } from '@chakra-ui/react'
 import axios from "axios";
