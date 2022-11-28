@@ -59,7 +59,7 @@ const LoginForm = ({
     if(data2.token){
       setOtpRequestSend(!otpRequestSend);
       setisUser((user)=>!user);
-    }else if(data2.error!='wrong credentials'){
+    }else if(data2.error!='Wrong Credentials'){
       toast({
         title: 'Something Went Wrong Please try again',
         position : 'top',
