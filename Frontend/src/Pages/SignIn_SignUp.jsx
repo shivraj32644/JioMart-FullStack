@@ -32,7 +32,9 @@ export default function SignIn_SignUp() {
   };
 
   const handleInputOtp = (e) => {
+
     setInputOtp(e.target.value);
+
   };
 
   const sendOtp = () => {
@@ -44,6 +46,8 @@ export default function SignIn_SignUp() {
       isClosable: true,
     });
   };
+
+
 
   return (
     <Box bg="#F6F6F7" pt={10} pb={5}>
