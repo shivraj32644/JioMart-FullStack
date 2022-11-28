@@ -56,17 +56,17 @@ AuthRouter.post('/login', async (req, res) => {
             }, JWT_SECRET)
             
             console.log(token)
-            let otp = randomInt(100000,999999)
+            let otp = randomInt(100000,999999);
             return res.status(200).send({
                 id : existingUser._id,
                 status : 'success',
-             token : token,
-             Otp : otp
+                token : token,
+                Otp : otp
           })
          }
            else{
             return res.status(404).send({
-                error : 'wrong credentials'
+                error : 'Wrong Credentials'
             })
            }
     } catch (error) {
