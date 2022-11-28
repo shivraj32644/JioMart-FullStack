@@ -3,5 +3,5 @@ import { getProductById, getProducts } from "../Controller/product.controller.js
 
 export const productRoute = Router()
 
-productRoute.get("/", getProducts)
-productRoute.get("/:id", getProductById)
+productRoute.get("/", getProducts);
+productRoute.get("/:id", getProductById);
