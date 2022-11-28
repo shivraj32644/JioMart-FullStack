@@ -153,10 +153,10 @@ export const delCart = async (req, res) => {
 };
 
 
-export const deleteAllItem = (req,res) => {
+export const deleteAllItem = async(req,res) => {
   try {
     const { id } = req.params;
-    Cart.deleteMany({ user_Id: id });
+    await Cart.deleteMany({ user_Id: id });
     return res.status(200).send({
       status: "success",
       message:"Checkout Successful"
