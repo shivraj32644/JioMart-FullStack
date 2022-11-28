@@ -6,7 +6,6 @@ import {
   AccordionPanel,
   Box,
   Container,
-  Divider,
   Heading,
 } from "@chakra-ui/react";
 import React from "react";

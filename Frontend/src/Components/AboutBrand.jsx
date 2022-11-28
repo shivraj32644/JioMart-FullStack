@@ -2,7 +2,7 @@ import { Box, Button, Collapse, Heading } from "@chakra-ui/react"
 import React from "react"
 
 export default function AboutBrand() {
-    const [show, setShow] = React.useState(false)
+    const [show, setShow] = React.useState(false);
   
     const handleToggle = () => setShow(!show)
   

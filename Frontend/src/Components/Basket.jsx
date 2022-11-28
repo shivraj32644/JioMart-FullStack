@@ -13,7 +13,7 @@ const Basket = ({ cartDetails, visible = true }) => {
     dispatch(getCartData(user_id))
    
   },[])
-  // console.log(cartItems);
+  
   var total = null;
   const cards = cartItems?.map((product) => {
     total += (Number(product.item_quantity)*Number(product.item_final_price))

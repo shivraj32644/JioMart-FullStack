@@ -3,17 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { Radio, Spin, Alert } from "antd";
 import "./Checkout.css";
 import Basket from "./Basket";
-// import { updateCart } from "../Redux/Cart/actions";
 import { useNavigate, useParams } from "react-router-dom";
 import { getCartData } from "../Redux/Cart/actions";
 import axios from "axios";
 const Checkout = () => {
   const user_id = localStorage.getItem("user_id") || "";
-  // const {  } = useSelector((state) => state.auth);
+ 
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
   const [cartDetails, setCartDetails] = useState({
-    // products: [],
+
     finalAmt: 0,
     discount: 0,
     mrp: 0,
@@ -31,7 +30,7 @@ const Checkout = () => {
 
     if (state === 1) {
       var stateTime = setTimeout(() => {
-        // dispatch(updateCart("order-confirmed"));
+      
         axios.delete(`https://jiomart-server.cyclic.app/cart/deleteall/${user_id}`)
           .then((res) => {
             dispatch(getCartData(user_id))
@@ -51,7 +50,7 @@ const Checkout = () => {
     var finalAmt = 0;
     var discount = 0;
     var mrp = 0; 
-    // var items = [];
+   
     console.log(cartItems);
     if (cartItems) {
       cartItems.forEach(element => {
@@ -62,7 +61,7 @@ const Checkout = () => {
   }
   useEffect(() => {
     setCartDetails({
-      // totalItems: mrp,
+     
       finalAmt: finalAmt.toFixed(2),
       discount: discount,
       mrp: mrp,
