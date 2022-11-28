@@ -60,7 +60,6 @@ export default function ProductDetails() {
       if (ele.item_Id === product_id) return ele;
     })
   }
-  // console.log(loading, error, product);
 
   if (loading) {
     return (
