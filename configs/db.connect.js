@@ -10,10 +10,10 @@ export const connectDataBase = () => {
     return new Promise((resolve, reject) => {
         mongoose.connect(`mongodb+srv://${username}:${password}@database.5lmxkzm.mongodb.net/?retryWrites=true&w=majority`, (err) => {
             if (err) {
-                reject("Database Connect Failed")
+                reject("Database Connect Failed");
             }
             else {
-                console.log("Connection Success")
+                console.log("Connection Success");
                 resolve();
             }
         })
