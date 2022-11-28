@@ -55,15 +55,14 @@ AuthRouter.post('/login', async (req, res) => {
                 Mobile_Number : existingUser.Mobile_Number
             }, JWT_SECRET)
             
-            console.log(token)
-            let otp = randomInt(100000,999999);
             return res.status(200).send({
                 id : existingUser._id,
                 status : 'success',
-                token : token,
-                Otp : otp
+                token : token
           })
          }
+
+        
            else{
             return res.status(404).send({
                 error : 'Wrong Credentials'
