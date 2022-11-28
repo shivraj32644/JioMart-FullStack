@@ -30,7 +30,6 @@ export default function AllProduct() {
     ) {
       setWindowWidth(window.outerWidth);
     }
-    // console.log(windowWidth,window.outerWidth,"hihihih")
   };
 
   const handleUrlFilter = (newUrlFilter) => {
