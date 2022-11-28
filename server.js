@@ -27,7 +27,7 @@ app.get("*", (req, res) => {
 app.listen(port, async() => {
     try {
         await connectDataBase();
-        console.log("localhost:3020")
+        console.log(`Running on http://localhost:3020`);
     } catch (error) {
         console.log(error)
     }
